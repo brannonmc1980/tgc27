@@ -65,8 +65,8 @@
   --emerald-dark: #4B7560;
   --lemon:        #D3D782;
   --lemon-bright: #E2E68C;
-  --paper:        #F4FAF6;
-  --paper-warm:   #EAF3EC;
+  --paper:        #FAFCFA;
+  --paper-warm:   #F2F6F2;
   --ink:          #1B1F33;
   --ink-soft:     #3A3F58;
   --rule:         #C9D9CD;
@@ -481,35 +481,28 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   overflow: hidden;
 }
 .section-light {
-  background-color: var(--paper);
+  background-color: #F8FAF8;
   background-image:
-    linear-gradient(180deg, rgba(244,250,246,0.20) 0%, rgba(244,250,246,0.20) 100%),
     url("../images/tex/mint-stone.jpg"),
     url("../images/tex/mint-mosaic.jpg");
-  background-size: auto, 1400px, 520px;
-  background-position: center, center, top left;
-  background-blend-mode: normal, normal, multiply;
+  background-size: 900px, 320px;
+  background-position: center, top left;
+  background-repeat: repeat, repeat;
+  background-blend-mode: soft-light, soft-light;
   color: var(--ink);
   position: relative;
 }
-.section-light::before {
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(70% 50% at 50% 0%, rgba(94,144,117,0.08), rgba(94,144,117,0) 70%),
-    radial-gradient(60% 60% at 100% 100%, rgba(211,215,130,0.06), rgba(211,215,130,0) 70%);
-  pointer-events: none;
-}
+.section-light::before { display: none; }
 .section-light .section-title { color: var(--ink); }
 .section-indigo {
   background-color: var(--indigo);
   background-image:
-    linear-gradient(180deg, rgba(20,23,42,0.22) 0%, rgba(20,23,42,0.40) 100%),
     url("../images/tex/indigo-stone.jpg"),
     url("../images/tex/indigo-mosaic.jpg");
-  background-size: auto, 1600px, 620px;
-  background-position: center, center, top left;
-  background-blend-mode: normal, normal, multiply;
+  background-size: 1300px, 460px;
+  background-position: center, top left;
+  background-repeat: repeat, repeat;
+  background-blend-mode: normal, multiply;
   color: #fff;
 }
 .section-indigo .eyebrow { color: rgba(255,255,255,0.72); }
@@ -672,10 +665,14 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 
 /* ----- CityAlight ----- */
 .cityalight {
-  background-color: var(--paper);
-  background-image: url("../images/tex/mint-stone.jpg");
-  background-size: 1400px;
-  background-position: center;
+  background-color: #F8FAF8;
+  background-image:
+    url("../images/tex/mint-stone.jpg"),
+    url("../images/tex/mint-mosaic.jpg");
+  background-size: 900px, 320px;
+  background-position: center, top left;
+  background-repeat: repeat, repeat;
+  background-blend-mode: soft-light, soft-light;
   padding: var(--pad-section) clamp(1rem, 3vw, 3rem);
   position: relative;
 }
@@ -843,10 +840,14 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 
 /* ----- Location ----- */
 .location {
-  background-color: var(--paper);
-  background-image: url("../images/tex/mint-stone.jpg");
-  background-size: 1400px;
-  background-position: center;
+  background-color: #F8FAF8;
+  background-image:
+    url("../images/tex/mint-stone.jpg"),
+    url("../images/tex/mint-mosaic.jpg");
+  background-size: 900px, 320px;
+  background-position: center, top left;
+  background-repeat: repeat, repeat;
+  background-blend-mode: soft-light, soft-light;
   padding: var(--pad-section) clamp(1rem, 3vw, 3rem);
   overflow: hidden;
 }
@@ -887,12 +888,11 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .site-footer {
   background-color: var(--indigo-deep);
   background-image:
-    linear-gradient(180deg, rgba(20,23,42,0.30) 0%, rgba(20,23,42,0.55) 100%),
     url("../images/tex/indigo-stone.jpg"),
     url("../images/tex/indigo-mosaic.jpg");
-  background-size: auto, 1600px, 520px;
-  background-position: center, center, top left;
-  background-blend-mode: normal, normal, multiply;
+  background-size: 1300px, 380px;
+  background-position: center, top left;
+  background-blend-mode: normal, multiply;
   color: rgba(255,255,255,0.75);
   padding: clamp(5.5rem, 7vw, 8rem) clamp(1rem, 3vw, 3rem) clamp(3rem, 4vw, 4.5rem);
   font-size: 0.92rem;
