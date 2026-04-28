@@ -65,11 +65,11 @@
   --emerald-dark: #4B7560;
   --lemon:        #D3D782;
   --lemon-bright: #E2E68C;
-  --paper:        #F5F1E8;
-  --paper-warm:   #EFE9DA;
+  --paper:        #F4FAF6;
+  --paper-warm:   #EAF3EC;
   --ink:          #1B1F33;
   --ink-soft:     #3A3F58;
-  --rule:         #C8C2B0;
+  --rule:         #C9D9CD;
 
   /* shadow tokens — very dark indigo, very transparent, very blurred */
   --shadow-soft:    0 18px 48px -16px rgba(20, 23, 42, 0.20),
@@ -94,8 +94,8 @@
   --fs-lead:    clamp(1.05rem, 0.4vw + 0.95rem, 1.3rem);
   --fs-small:   clamp(0.85rem, 0.2vw + 0.78rem, 0.95rem);
 
-  --pad-section: clamp(5rem, 9vw, 11rem);
-  --pad-section-y-tight: clamp(4rem, 6vw, 7.5rem);
+  --pad-section: clamp(4rem, 7.2vw, 8.8rem);
+  --pad-section-y-tight: clamp(3.2rem, 5vw, 6rem);
 
   --container:        min(1320px, 92vw);
   --container-narrow: min(820px,  92vw);
@@ -135,6 +135,11 @@ h1, h2, h3, h4, h5 {
   line-height: 1.06;
 }
 em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 300; }
+.theme-italic {
+  font-family: "Mallory", sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
 
 ::selection { background: rgba(211, 215, 130, 0.45); color: var(--indigo); }
 
@@ -206,8 +211,10 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   background: currentColor;
   color: var(--indigo);
   margin-left: 0.2rem;
+  padding-left: 2px; /* optical center for play triangle */
+  box-sizing: border-box;
 }
-.btn .play-dot svg { color: #fff; transform: translateX(1px); }
+.btn .play-dot svg { color: #fff; }
 
 .btn-lemon  { background: var(--lemon);  color: var(--indigo); box-shadow: 0 8px 24px -10px rgba(211,215,130,0.55); }
 .btn-lemon:hover  { background: var(--lemon-bright); transform: translateY(-2px); box-shadow: 0 16px 36px -12px rgba(211,215,130,0.75); }
@@ -283,7 +290,7 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   isolation: isolate;
   display: flex;
   align-items: center;
-  padding: clamp(7rem, 12vh, 11rem) clamp(1rem, 3vw, 3rem) clamp(5rem, 9vw, 8rem);
+  padding: clamp(7rem, 12vh, 11rem) clamp(1rem, 3vw, 3rem) clamp(8rem, 14vw, 14rem);
 }
 .hero-bg {
   position: absolute; inset: -10% 0 -10% 0;
@@ -331,35 +338,21 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 }
 .hero-copy { max-width: 720px; }
 .hero-title {
-  font-size: var(--fs-display);
-  letter-spacing: -0.005em;
-  line-height: 1.02;
-  margin: 0 0 1.8rem;
-  display: flex; flex-direction: column;
-}
-.hero-title .line-a, .hero-title .line-b { display: block; white-space: nowrap; }
-.hero-title .line-b { letter-spacing: 0.005em; }
-.hero-title .b {
-  font-family: "Empirica", serif;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.005em;
-}
-.hero-title .i {
-  font-family: "Empirica", serif;
-  font-style: italic;
-  font-weight: 300;
-}
-.hero-title .lemon { color: var(--lemon); }
-
-.hero-tagline {
-  font-family: "Mallory", sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--lemon);
-  font-size: clamp(0.85rem, 0.3vw + 0.78rem, 1.05rem);
   margin: 0 0 2.2rem;
+  max-width: clamp(420px, 52vw, 760px);
+}
+.hero-title img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 38px rgba(0,0,0,0.35));
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
 }
 .hero-pitch p {
   margin: 0 0 1.1rem;
@@ -378,8 +371,9 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .hero-seal {
   position: relative;
   justify-self: end;
-  width: clamp(280px, 36vw, 620px);
+  width: clamp(280px, 32vw, 560px);
   aspect-ratio: 1 / 1;
+  margin-right: clamp(0rem, 4vw, 5rem);
   filter: drop-shadow(0 20px 60px rgba(20,23,42,0.55));
 }
 .hero-seal img { width: 100%; height: 100%; object-fit: contain; }
@@ -416,16 +410,15 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 /* ----- Info bar ----- */
 .info-bar {
   position: relative;
-  margin-top: clamp(-7rem, -8vw, -5rem);
+  margin-top: clamp(-5rem, -5vw, -3.5rem);
   z-index: 5;
   padding: 0 clamp(1rem, 3vw, 3rem);
 }
 .info-shell {
   width: var(--container-wide);
   margin-inline: auto;
-  background:
-    linear-gradient(180deg, rgba(94,144,117,0.96), rgba(75,117,96,0.96));
-  border: 1px solid rgba(255,255,255,0.08);
+  background-color: var(--emerald);
+  border: 1px solid rgba(255,255,255,0.10);
   border-radius: 4px;
   color: #fff;
   padding: clamp(1.6rem, 2.4vw, 2.8rem) clamp(1rem, 2vw, 2rem);
@@ -440,27 +433,39 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   content: "";
   position: absolute; inset: 0;
   pointer-events: none;
-  background:
-    radial-gradient(80% 100% at 0% 0%, rgba(255,255,255,0.10), rgba(255,255,255,0) 60%),
-    radial-gradient(60% 100% at 100% 100%, rgba(0,0,0,0.18), rgba(0,0,0,0) 60%);
+  background-image:
+    url("../images/tex/emerald-stone.jpg"),
+    url("../images/tex/emerald-mosaic.jpg");
+  background-size: 1400px, 480px;
+  background-position: center, top left;
+  background-blend-mode: multiply;
+  opacity: 0.55;
+  mix-blend-mode: soft-light;
 }
+.info-cell { position: relative; z-index: 1; }
 .info-cell {
   text-align: center;
   position: relative;
-  padding: 0 1rem;
+  padding: 0.4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.55rem;
 }
 .info-cell + .info-cell::before {
   content: "";
   position: absolute; left: 0; top: 14%; bottom: 14%; width: 1px;
-  background: rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.18);
 }
 .info-icon {
   display: inline-flex; align-items: center; justify-content: center;
   width: 48px; height: 48px;
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.42);
   border-radius: 50%;
-  margin: 0 auto 0.9rem;
-  color: rgba(255,255,255,0.92);
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 0.5rem;
+  flex: 0 0 auto;
 }
 .info-head {
   font-family: "Mallory", sans-serif;
@@ -468,13 +473,16 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   text-transform: uppercase;
   font-size: clamp(0.85rem, 0.25vw + 0.78rem, 1rem);
   font-weight: 500;
-  margin-bottom: 0.3rem;
+  margin: 0;
+  line-height: 1.35;
 }
 .info-sub {
   font-family: "Mallory", sans-serif;
   font-size: 0.92rem;
-  color: rgba(255,255,255,0.78);
+  color: rgba(255,255,255,0.82);
   letter-spacing: 0.04em;
+  margin: 0;
+  line-height: 1.4;
 }
 
 /* ----- Sections ----- */
@@ -485,12 +493,35 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   overflow: hidden;
 }
 .section-light {
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(180deg, rgba(244,250,246,0.55) 0%, rgba(244,250,246,0.55) 100%),
+    url("../images/tex/mint-stone.jpg"),
+    url("../images/tex/mint-mosaic.jpg");
+  background-size: auto, 1400px, 600px;
+  background-position: center, center, top left;
+  background-blend-mode: normal, normal, multiply;
   color: var(--ink);
+  position: relative;
+}
+.section-light::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(70% 50% at 50% 0%, rgba(94,144,117,0.08), rgba(94,144,117,0) 70%),
+    radial-gradient(60% 60% at 100% 100%, rgba(211,215,130,0.06), rgba(211,215,130,0) 70%);
+  pointer-events: none;
 }
 .section-light .section-title { color: var(--ink); }
 .section-indigo {
-  background: linear-gradient(180deg, var(--indigo) 0%, var(--indigo-deep) 100%);
+  background-color: var(--indigo);
+  background-image:
+    linear-gradient(180deg, rgba(20,23,42,0.55) 0%, rgba(20,23,42,0.75) 100%),
+    url("../images/tex/indigo-stone.jpg"),
+    url("../images/tex/indigo-mosaic.jpg");
+  background-size: auto, 1600px, 720px;
+  background-position: center, center, top left;
+  background-blend-mode: normal, normal, multiply;
   color: #fff;
 }
 .section-indigo .eyebrow { color: rgba(255,255,255,0.72); }
@@ -498,33 +529,33 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .paper-grain {
   position: absolute; inset: 0;
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.6;
   background:
-    radial-gradient(70% 50% at 50% 0%, rgba(94,144,117,0.06), rgba(94,144,117,0) 70%),
-    radial-gradient(60% 60% at 100% 100%, rgba(211,215,130,0.05), rgba(211,215,130,0) 70%);
-}
-.paper-grain::after {
-  content: "";
-  position: absolute; inset: 0;
-  background-image:
-    radial-gradient(rgba(0,0,0,0.05) 0.6px, transparent 0.8px);
-  background-size: 4px 4px;
-  opacity: 0.55;
-  mix-blend-mode: multiply;
+    radial-gradient(70% 50% at 50% 0%, rgba(94,144,117,0.05), rgba(94,144,117,0) 70%),
+    radial-gradient(60% 60% at 100% 100%, rgba(211,215,130,0.04), rgba(211,215,130,0) 70%);
 }
 
 /* ----- About ----- */
 #about .section-title { margin-top: 0.6rem; }
 
 /* ----- Speakers ----- */
-.speakers { padding-top: clamp(6rem, 10vw, 12rem); padding-bottom: clamp(6rem, 10vw, 12rem); }
+.speakers {
+  padding-top: clamp(5rem, 8vw, 9.5rem);
+  padding-bottom: clamp(5rem, 8vw, 9.5rem);
+  padding-left: 0; padding-right: 0;
+}
+.speakers-shell {
+  width: 100%;
+  padding-inline: clamp(1rem, 3vw, 3rem);
+}
 .speakers-bg {
   position: absolute; inset: -6% 0;
   background:
-    radial-gradient(60% 60% at 12% 18%, rgba(94,144,117,0.18), rgba(94,144,117,0) 70%),
-    radial-gradient(60% 60% at 92% 88%, rgba(211,215,130,0.10), rgba(211,215,130,0) 70%);
+    radial-gradient(60% 60% at 12% 18%, rgba(94,144,117,0.22), rgba(94,144,117,0) 70%),
+    radial-gradient(60% 60% at 92% 88%, rgba(211,215,130,0.12), rgba(211,215,130,0) 70%);
   pointer-events: none; z-index: -1;
 }
+.speakers .section-title { color: var(--lemon); }
 
 .speaker-rail {
   position: relative;
@@ -533,6 +564,7 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   grid-template-columns: 56px minmax(0, 1fr) 56px;
   align-items: center;
   gap: 0.6rem;
+  padding-inline: clamp(0.4rem, 2vw, 1.6rem);
 }
 .speaker-track {
   display: grid;
@@ -699,7 +731,10 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 
 /* ----- CityAlight ----- */
 .cityalight {
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: url("../images/tex/mint-stone.jpg");
+  background-size: 1400px;
+  background-position: center;
   padding: var(--pad-section) clamp(1rem, 3vw, 3rem);
   position: relative;
 }
@@ -757,7 +792,9 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 }
 .who-icon {
   color: var(--emerald);
-  margin-bottom: 1.1rem;
+  margin: 0 auto 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px;
   transition: transform .4s var(--ease), color .3s var(--ease);
 }
 .who-cell:hover .who-icon { transform: translateY(-4px); color: var(--emerald-dark); }
@@ -824,88 +861,88 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .trailer-play.is-hidden { opacity: 0; pointer-events: none; }
 .trailer-play-ring {
   position: absolute;
-  width: 92px; height: 92px;
+  width: 168px; height: 168px;
   border-radius: 50%;
-  border: 1.5px solid rgba(211,215,130,0.7);
+  border: 1.5px solid rgba(255,255,255,0.9);
   animation: ringPulse 2.8s var(--ease) infinite;
 }
 @keyframes ringPulse {
   0%   { transform: scale(0.9); opacity: 0.85; }
-  70%  { transform: scale(1.4); opacity: 0; }
-  100% { transform: scale(1.4); opacity: 0; }
+  70%  { transform: scale(1.45); opacity: 0; }
+  100% { transform: scale(1.45); opacity: 0; }
 }
-.trailer-play svg { z-index: 2; transform: translateX(2px); }
+.trailer-play-disc {
+  position: relative;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  display: inline-flex; align-items: center; justify-content: center;
+  box-shadow: 0 22px 56px -14px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.15);
+  z-index: 2;
+  transition: background .35s var(--ease), transform .4s var(--ease), box-shadow .35s var(--ease);
+}
+.trailer-play:hover .trailer-play-disc {
+  background: var(--paper);
+  transform: scale(1.06);
+  box-shadow: 0 30px 70px -16px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.25);
+}
+.trailer-play-disc svg {
+  color: var(--lemon);
+  width: 56px; height: 56px;
+}
 
 /* ----- Location ----- */
 .location {
-  background: var(--paper);
-  padding: var(--pad-section) 0;
+  background-color: var(--paper);
+  background-image: url("../images/tex/mint-stone.jpg");
+  background-size: 1400px;
+  background-position: center;
+  padding: var(--pad-section) clamp(1rem, 3vw, 3rem);
   overflow: hidden;
 }
 .loc-grid {
+  width: var(--container-wide);
+  margin-inline: auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: stretch;
-  gap: 0;
-  width: 100%;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4.5rem);
 }
 .loc-img {
   position: relative;
-  min-height: clamp(380px, 38vw, 680px);
+  border-radius: 8px;
   overflow: hidden;
+  aspect-ratio: 4 / 3;
+  box-shadow:
+    0 14px 36px -18px rgba(20, 23, 42, 0.18),
+    0 4px 14px  -8px rgba(20, 23, 42, 0.10);
 }
 .loc-img-inner {
   position: absolute; inset: -8% 0;
-  background:
-    /* atmospheric sunset behind city */
-    radial-gradient(60% 80% at 70% 100%, rgba(255,160,90,0.55), rgba(255,160,90,0) 60%),
-    radial-gradient(40% 70% at 30% 100%, rgba(190,80,90,0.45), rgba(190,80,90,0) 65%),
-    linear-gradient(180deg, #1B1F33 0%, #3B3349 55%, #6F3A47 80%, #C97049 100%);
+  background-size: cover;
+  background-position: center;
   will-change: transform;
 }
-.loc-img-inner::before {
-  content: "";
+.loc-img-tint {
   position: absolute; inset: 0;
-  background:
-    /* skyline silhouette using layered gradients */
-    linear-gradient(to top, rgba(20,23,42,0.95) 0%, rgba(20,23,42,0.95) 12%, transparent 12.1%),
-    /* monument */
-    radial-gradient(circle at 22% 78%, rgba(20,23,42,0.95) 0.6%, rgba(20,23,42,0) 0.7%),
-    /* buildings */
-    linear-gradient(to top,
-      transparent 12%,
-      rgba(20,23,42,0.92) 12%,
-      rgba(20,23,42,0.92) 22%,
-      transparent 22%
-    );
+  background: linear-gradient(180deg, rgba(20,23,42,0.05) 0%, rgba(20,23,42,0.10) 100%);
   pointer-events: none;
 }
-.loc-img-inner::after {
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(80% 60% at 50% 0%, rgba(20,23,42,0.45), rgba(20,23,42,0) 60%),
-    radial-gradient(60% 40% at 50% 100%, rgba(0,0,0,0.45), rgba(0,0,0,0) 60%);
-  pointer-events: none;
-}
-.loc-skyline {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 38%;
-  z-index: 1;
-}
-.loc-skyline svg { width: 100%; height: 100%; display: block; }
 .loc-copy {
   display: flex; flex-direction: column; justify-content: center;
-  padding: clamp(3rem, 6vw, 6rem) clamp(2rem, 5vw, 6rem);
-  max-width: 620px;
+  max-width: 560px;
 }
 
 /* ----- Footer ----- */
 .site-footer {
-  background: var(--indigo-deep);
+  background-color: var(--indigo-deep);
+  background-image:
+    linear-gradient(180deg, rgba(20,23,42,0.6) 0%, rgba(20,23,42,0.85) 100%),
+    url("../images/tex/indigo-stone.jpg");
+  background-size: auto, 1600px;
+  background-position: center, center;
   color: rgba(255,255,255,0.75);
-  padding: clamp(3.5rem, 5vw, 5.5rem) clamp(1rem, 3vw, 3rem) clamp(2rem, 3vw, 3rem);
+  padding: clamp(5.5rem, 7vw, 8rem) clamp(1rem, 3vw, 3rem) clamp(3rem, 4vw, 4.5rem);
   font-size: 0.92rem;
 }
 .footer-grid {
