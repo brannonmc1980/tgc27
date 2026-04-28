@@ -850,10 +850,11 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .trailer-play.is-hidden { opacity: 0; pointer-events: none; }
 .trailer-play-ring {
   position: absolute;
-  width: 168px; height: 168px;
+  width: 130px; height: 130px;
   border-radius: 50%;
   border: 1.5px solid rgba(255,255,255,0.9);
   animation: ringPulse 2.8s var(--ease) infinite;
+  z-index: 2;
 }
 @keyframes ringPulse {
   0%   { transform: scale(0.9); opacity: 0.85; }
@@ -862,12 +863,12 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 }
 .trailer-play-disc {
   position: relative;
-  width: 140px; height: 140px;
+  width: 104px; height: 104px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.92);
   display: inline-flex; align-items: center; justify-content: center;
   box-shadow: 0 22px 56px -14px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.15);
-  z-index: 2;
+  z-index: 3;
   transition: background .35s var(--ease), transform .4s var(--ease), box-shadow .35s var(--ease);
 }
 .trailer-play:hover .trailer-play-disc {
