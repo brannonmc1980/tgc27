@@ -290,7 +290,7 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   isolation: isolate;
   display: flex;
   align-items: center;
-  padding: clamp(7rem, 12vh, 11rem) clamp(1rem, 3vw, 3rem) clamp(8rem, 14vw, 14rem);
+  padding: clamp(7rem, 12vh, 11rem) clamp(1rem, 3vw, 3rem) clamp(5rem, 8vw, 8rem);
 }
 .hero-bg {
   position: absolute; inset: -10% 0 -10% 0;
