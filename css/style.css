@@ -417,8 +417,8 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .info-shell {
   width: var(--container-wide);
   margin-inline: auto;
-  background-color: var(--emerald);
-  border: 1px solid rgba(255,255,255,0.10);
+  background: #5E9075;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 4px;
   color: #fff;
   padding: clamp(1.6rem, 2.4vw, 2.8rem) clamp(1rem, 2vw, 2rem);
@@ -428,19 +428,7 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
-}
-.info-shell::before {
-  content: "";
-  position: absolute; inset: 0;
-  pointer-events: none;
-  background-image:
-    url("../images/tex/emerald-stone.jpg"),
-    url("../images/tex/emerald-mosaic.jpg");
-  background-size: 1400px, 480px;
-  background-position: center, top left;
-  background-blend-mode: multiply;
-  opacity: 0.55;
-  mix-blend-mode: soft-light;
+  text-align: center;
 }
 .info-cell { position: relative; z-index: 1; }
 .info-cell {
@@ -495,10 +483,10 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .section-light {
   background-color: var(--paper);
   background-image:
-    linear-gradient(180deg, rgba(244,250,246,0.55) 0%, rgba(244,250,246,0.55) 100%),
+    linear-gradient(180deg, rgba(244,250,246,0.20) 0%, rgba(244,250,246,0.20) 100%),
     url("../images/tex/mint-stone.jpg"),
     url("../images/tex/mint-mosaic.jpg");
-  background-size: auto, 1400px, 600px;
+  background-size: auto, 1400px, 520px;
   background-position: center, center, top left;
   background-blend-mode: normal, normal, multiply;
   color: var(--ink);
@@ -516,10 +504,10 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .section-indigo {
   background-color: var(--indigo);
   background-image:
-    linear-gradient(180deg, rgba(20,23,42,0.55) 0%, rgba(20,23,42,0.75) 100%),
+    linear-gradient(180deg, rgba(20,23,42,0.22) 0%, rgba(20,23,42,0.40) 100%),
     url("../images/tex/indigo-stone.jpg"),
     url("../images/tex/indigo-mosaic.jpg");
-  background-size: auto, 1600px, 720px;
+  background-size: auto, 1600px, 620px;
   background-position: center, center, top left;
   background-blend-mode: normal, normal, multiply;
   color: #fff;
@@ -560,12 +548,22 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .speaker-rail {
   position: relative;
   margin-top: clamp(2.4rem, 5vw, 4.5rem);
-  display: grid;
-  grid-template-columns: 56px minmax(0, 1fr) 56px;
-  align-items: center;
-  gap: 0.6rem;
   padding-inline: clamp(0.4rem, 2vw, 1.6rem);
 }
+.speaker-track-wrap {
+  position: relative;
+}
+.speaker-track-wrap::before,
+.speaker-track-wrap::after {
+  content: "";
+  position: absolute; top: 0; bottom: 0;
+  width: clamp(60px, 8vw, 140px);
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--indigo) 0%, rgba(27,31,51,0.85) 40%, rgba(27,31,51,0) 100%);
+}
+.speaker-track-wrap::before { left: 0; }
+.speaker-track-wrap::after  { right: 0; transform: scaleX(-1); }
 .speaker-track {
   display: grid;
   grid-auto-flow: column;
@@ -663,60 +661,44 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 
 .speaker-meta {
   text-align: center;
-  margin-top: 1.1rem;
-  padding: 0 0.6rem;
+  margin-top: 1.2rem;
+  padding: 0 0.6rem 0.4rem;
 }
 .speaker-meta h3 {
   font-family: "Mallory", sans-serif;
   font-weight: 500;
-  font-size: clamp(0.9rem, 0.18vw + 0.86rem, 1.02rem);
+  font-size: clamp(0.95rem, 0.2vw + 0.9rem, 1.08rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--lemon);
   transition: color .25s var(--ease);
-  margin: 0 0 0.55rem;
-  line-height: 1.2;
-}
-.speaker-meta .church {
-  font-family: "Mallory", sans-serif;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.55);
-  letter-spacing: 0.06em;
-  margin: 0 0 0.3rem;
-}
-.speaker-meta .topic {
-  font-family: "Empirica", serif;
-  font-style: italic;
-  font-weight: 300;
-  color: rgba(255,255,255,0.92);
-  font-size: clamp(0.95rem, 0.18vw + 0.9rem, 1.08rem);
-  margin: 0 0 0.25rem;
-  line-height: 1.3;
-}
-.speaker-meta .ref {
-  font-family: "Mallory", sans-serif;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 0.08em;
   margin: 0;
+  line-height: 1.25;
 }
 
 .rail-btn {
-  width: 44px; height: 44px;
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  width: 48px; height: 48px;
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.28);
+  background: rgba(20,23,42,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: rgba(255,255,255,0.92);
   display: inline-flex; align-items: center; justify-content: center;
   transition: all .3s var(--ease);
+  transform: translateY(-50%);
 }
 .rail-btn:hover {
   border-color: var(--lemon);
   color: var(--lemon);
-  transform: scale(1.05);
-  background: rgba(211,215,130,0.06);
+  background: rgba(20,23,42,0.75);
+  transform: translateY(-50%) scale(1.06);
 }
-.rail-prev { justify-self: start; }
-.rail-next { justify-self: end; }
+.rail-prev { left: clamp(0.5rem, 1.5vw, 1.5rem); }
+.rail-next { right: clamp(0.5rem, 1.5vw, 1.5rem); }
 
 .rail-dots {
   display: flex; justify-content: center; gap: 0.7rem;
@@ -852,11 +834,18 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
   color: var(--lemon);
-  background:
-    linear-gradient(180deg, rgba(20,23,42,0.0) 30%, rgba(20,23,42,0.5) 100%),
-    url("../images/hero-worship.jpg") center/cover no-repeat;
-  filter: saturate(0.7) brightness(0.65);
   transition: opacity .4s var(--ease);
+  z-index: 3;
+  isolation: isolate;
+}
+.trailer-play::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(20,23,42,0.10) 0%, rgba(20,23,42,0.55) 100%),
+    url("../images/hero-worship.jpg") center/cover no-repeat;
+  filter: saturate(0.7) brightness(0.6);
+  z-index: 1;
 }
 .trailer-play.is-hidden { opacity: 0; pointer-events: none; }
 .trailer-play-ring {
@@ -875,17 +864,18 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   position: relative;
   width: 140px; height: 140px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.92);
   display: inline-flex; align-items: center; justify-content: center;
   box-shadow: 0 22px 56px -14px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.15);
   z-index: 2;
   transition: background .35s var(--ease), transform .4s var(--ease), box-shadow .35s var(--ease);
 }
 .trailer-play:hover .trailer-play-disc {
-  background: var(--paper);
+  background: #F4FAF6;
   transform: scale(1.06);
-  box-shadow: 0 30px 70px -16px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.25);
+  box-shadow: 0 30px 70px -16px rgba(0,0,0,0.65), 0 0 0 1px rgba(244,250,246,0.45);
 }
+.trailer-play:hover .trailer-play-ring { border-color: #F4FAF6; }
 .trailer-play-disc svg {
   color: var(--lemon);
   width: 56px; height: 56px;
@@ -937,10 +927,12 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .site-footer {
   background-color: var(--indigo-deep);
   background-image:
-    linear-gradient(180deg, rgba(20,23,42,0.6) 0%, rgba(20,23,42,0.85) 100%),
-    url("../images/tex/indigo-stone.jpg");
-  background-size: auto, 1600px;
-  background-position: center, center;
+    linear-gradient(180deg, rgba(20,23,42,0.30) 0%, rgba(20,23,42,0.55) 100%),
+    url("../images/tex/indigo-stone.jpg"),
+    url("../images/tex/indigo-mosaic.jpg");
+  background-size: auto, 1600px, 520px;
+  background-position: center, center, top left;
+  background-blend-mode: normal, normal, multiply;
   color: rgba(255,255,255,0.75);
   padding: clamp(5.5rem, 7vw, 8rem) clamp(1rem, 3vw, 3rem) clamp(3rem, 4vw, 4.5rem);
   font-size: 0.92rem;
@@ -1055,7 +1047,7 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 
 /* Mobile */
 @media (max-width: 720px) {
-  .primary-nav, .nav-cta { display: none; }
+  .primary-nav, .nav-cta, .hero-scrollcue { display: none; }
   .nav-toggle {
     display: inline-flex;
     margin-left: auto;
@@ -1070,8 +1062,14 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
   .hero-title { font-size: clamp(2.6rem, 11vw, 4rem); gap: 0.18em 0.28em; }
   .hero-cta .btn { width: 100%; justify-content: center; }
   .info-bar { margin-top: -3rem; padding: 0 1rem; }
-  .info-shell { grid-template-columns: 1fr; gap: 1.4rem; padding: 1.6rem 1rem; }
-  .info-cell { padding: 0; }
+  .info-shell {
+    width: 100%;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    padding: 1.8rem 1.2rem;
+  }
+  .info-cell { padding: 0.4rem 0; }
+  .info-cell + .info-cell::before { display: none; }
   .speakers, .trailer { padding-top: 4.5rem; padding-bottom: 4.5rem; }
   .speaker-rail { grid-template-columns: 1fr; }
   .speaker-track { grid-auto-columns: 78%; padding: 0.4rem 0.2rem 1.2rem; }
