@@ -558,113 +558,81 @@ em, .italic { font-family: "Empirica", serif; font-style: italic; font-weight: 3
 .speaker-track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(275px, 1fr);
+  grid-auto-columns: minmax(345px, 1fr);
   gap: clamp(1rem, 1.6vw, 1.6rem);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  padding: 1.2rem 0.4rem 1.6rem;
+  padding: 1.6rem 0.4rem 4.5rem;
   scrollbar-width: none;
 }
 .speaker-track::-webkit-scrollbar { display: none; }
 
 .speaker-card {
   scroll-snap-align: start;
-  background: linear-gradient(180deg, #2A2D44 0%, #1F2235 100%);
-  border-radius: var(--rad-card);
-  padding: 0.65rem 0.65rem 1.4rem;
+  background: linear-gradient(180deg, #2A2E47 0%, #1F2338 100%);
+  border-radius: 14px;
+  padding: 0;
   position: relative;
-  border: 1px solid rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
   box-shadow:
-    0 26px 60px -22px rgba(10, 12, 28, 0.55),
+    0 28px 60px -22px rgba(10, 12, 28, 0.55),
     0 10px 24px -10px rgba(10, 12, 28, 0.38),
-    0 1px 0 rgba(255,255,255,0.05) inset;
+    0 1px 0 rgba(255,255,255,0.06) inset;
   transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .35s var(--ease);
+  overflow: hidden;
   isolation: isolate;
-}
-.speaker-card::after {
-  content: "";
-  position: absolute; inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(211,215,130,0) 60%, rgba(211,215,130,0) 100%);
-  transition: background .4s var(--ease);
 }
 .speaker-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(211,215,130,0.18);
+  border-color: rgba(211,215,130,0.22);
   box-shadow:
-    0 50px 100px -30px rgba(8, 10, 22, 0.75),
+    0 54px 100px -30px rgba(8, 10, 22, 0.75),
     0 22px 44px -16px rgba(8, 10, 22, 0.50),
-    0 1px 0 rgba(255,255,255,0.07) inset;
+    0 1px 0 rgba(255,255,255,0.08) inset;
 }
 .speaker-card:hover .speaker-meta h3 { color: var(--lemon); }
 .speaker-card:hover .speaker-photo img { transform: scale(1.04); }
 
 .speaker-photo {
   position: relative;
-  border-radius: var(--rad-photo);
   overflow: hidden;
   aspect-ratio: 4 / 5;
-  background: linear-gradient(180deg, #1F2235 0%, #14172A 100%);
-  box-shadow:
-    0 22px 50px -22px rgba(8, 10, 22, 0.65),
-    0 8px 18px  -8px rgba(8, 10, 22, 0.35);
+  background: linear-gradient(180deg, #1F2338 0%, #14172A 100%);
 }
 .speaker-photo img {
-  width: 100%; height: 100%; object-fit: cover;
+  width: 100%; height: 100%; object-fit: cover; object-position: center 22%;
   transition: transform 1.2s var(--ease), filter .5s var(--ease);
   filter: saturate(0.95) contrast(1.02);
 }
 .speaker-photo::after {
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(20,23,42,0) 55%, rgba(20,23,42,0.85) 100%);
+  background: linear-gradient(180deg, rgba(20,23,42,0) 55%, rgba(31,35,56,0.95) 100%);
   pointer-events: none;
-}
-
-.speaker-photo.placeholder {
-  background:
-    radial-gradient(70% 60% at 50% 30%, rgba(94,144,117,0.55), rgba(94,144,117,0.12) 60%, rgba(20,23,42,0.95) 100%),
-    linear-gradient(180deg, #2C3045 0%, #14172A 100%);
-}
-.ph-mono {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  color: rgba(211,215,130,0.95);
-}
-.ph-mono span {
-  font-family: "Empirica", serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(3.4rem, 4vw, 5.4rem);
-  letter-spacing: 0.02em;
-  text-shadow: 0 6px 24px rgba(0,0,0,0.45);
-}
-.ph-tex {
-  position: absolute; inset: 0;
-  background-image:
-    radial-gradient(rgba(255,255,255,0.10) 0.6px, transparent 0.7px);
-  background-size: 4px 4px;
-  mix-blend-mode: overlay;
-  opacity: 0.4;
 }
 
 .speaker-meta {
   text-align: center;
-  margin-top: 1.2rem;
-  padding: 0 0.6rem 0.4rem;
+  padding: 1.1rem 0.8rem 1.5rem;
 }
 .speaker-meta h3 {
-  font-family: "Mallory", sans-serif;
-  font-weight: 500;
-  font-size: clamp(0.95rem, 0.2vw + 0.9rem, 1.08rem);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--lemon);
+  font-family: "Empirica", serif;
+  font-weight: 400;
+  font-size: clamp(1.1rem, 0.25vw + 1rem, 1.32rem);
+  letter-spacing: 0.005em;
+  color: #ffffff;
   transition: color .25s var(--ease);
+  margin: 0 0 0.3rem;
+  line-height: 1.2;
+}
+.speaker-meta p {
+  font-family: "Mallory", sans-serif;
+  font-weight: 400;
+  font-size: 0.86rem;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.02em;
   margin: 0;
-  line-height: 1.25;
 }
 
 .rail-btn {
